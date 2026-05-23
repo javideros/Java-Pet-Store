@@ -1,0 +1,45 @@
+{
+  "id": "2026-05-23T175826Z-e4aab77c",
+  "timestamp": "2026-05-23T17:58:26Z",
+  "timestamp_ms": 1779559106906,
+  "repo_path": "/tmp/waterrock-JmpePH",
+  "git_sha": "1fdd7821f44c6959e9287355e477901591aebf63",
+  "git_branch": "main",
+  "dependency_change": {
+    "group": null,
+    "artifact": "_scaffold",
+    "from_version": "0",
+    "to_version": "0"
+  },
+  "migrations_applied": [
+    "ant-to-maven-scaffold"
+  ],
+  "file_backups": [
+    {
+      "path": "pom.xml",
+      "original_content": "",
+      "content_hash": "30406ea523c53def7b14845fc0f4c0e4",
+      "transformed_hash": "a4f4e2cdda9bfc2d670082f1e4e175e2"
+    },
+    {
+      "path": "pom-parent.xml",
+      "original_content": "",
+      "content_hash": "30406ea523c53def7b14845fc0f4c0e4",
+      "transformed_hash": "f8a45c818040be831d5f60453156a49e"
+    },
+    {
+      "path": "ws/apps/petstore/pom.xml",
+      "original_content": "",
+      "content_hash": "30406ea523c53def7b14845fc0f4c0e4",
+      "transformed_hash": "ad7f480713c028a54e88cf4f64f02e4e"
+    },
+    {
+      "path": "ws/apps/standalone-tests/catalogclient/pom.xml",
+      "original_content": "",
+      "content_hash": "30406ea523c53def7b14845fc0f4c0e4",
+      "transformed_hash": "2556ed93ef81ad21c591824c00d20c88"
+    }
+  ],
+  "dry_run": false,
+  "schema_version": 1
+}
