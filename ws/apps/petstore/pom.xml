@@ -146,7 +146,7 @@
     <dependency>
       <groupId>rome</groupId>
       <artifactId>rome</artifactId>
-      <version>0.8</version>
+      <version>1.0</version>
     </dependency>
 
     <!-- BLOCKER: Apache Shale retired 2009 — replace with JSF 2.3+ <f:ajax> or JAX-RS -->
