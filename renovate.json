@@ -24,8 +24,7 @@
         "^javax\\.validation:validation-api$",
         "^javax\\.ws\\.rs:javax\\.ws\\.rs-api$"
       ],
-      "allowedVersions": "<=3.0.*",
-      "comment": "Constrain to Java EE 6 APIs (javax.* namespace). Jakarta EE 9+ requires code migrations (javax→jakarta)."
+      "allowedVersions": "<=3.0.*"
     }
   ],
   "forkProcessing": "enabled"
