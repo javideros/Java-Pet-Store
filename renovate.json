@@ -1,8 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "prHourlyLimit": 10,
   "prConcurrentLimit": 20,
   "packageRules": [
@@ -11,7 +9,7 @@
       "enabled": true
     },
     {
-      "description": "Java EE 5→6 migration test: target EE 6 APIs (javax.* namespace)",
+      "description": "Java EE 5→6 migration: constrain to EE 6 APIs (javax.* namespace, version <=3.0.*)",
       "matchDatasources": ["maven"],
       "matchPackagePatterns": [
         "^javax\\.servlet:servlet-api$",
@@ -29,4 +27,3 @@
   ],
   "forkProcessing": "enabled"
 }
-
