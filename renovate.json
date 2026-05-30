@@ -23,6 +23,24 @@
         "^javax\\.ws\\.rs:javax\\.ws\\.rs-api$"
       ],
       "allowedVersions": "<=3.0.*"
+    },
+    {
+      "description": "Java EE 5→6: coordinate renames that Renovate cannot auto-detect (dead artifact, new Maven coordinates)",
+      "matchPackageNames": ["javax.servlet:servlet-api"],
+      "replacementName": "javax.servlet:javax.servlet-api",
+      "replacementVersion": "3.0.1"
+    },
+    {
+      "description": "Java EE 5→6: JSF coordinate rename (jsf-api is dead, javax.faces-api is EE 6)",
+      "matchPackageNames": ["javax.faces:jsf-api"],
+      "replacementName": "javax.faces:javax.faces-api",
+      "replacementVersion": "2.1"
+    },
+    {
+      "description": "Java EE 5→6: JPA coordinate rename (persistence-api is dead, javax.persistence-api is EE 6)",
+      "matchPackageNames": ["javax.persistence:persistence-api"],
+      "replacementName": "javax.persistence:javax.persistence-api",
+      "replacementVersion": "2.0.0"
     }
   ],
   "forkProcessing": "enabled"
