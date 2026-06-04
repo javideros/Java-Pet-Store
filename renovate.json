@@ -93,9 +93,9 @@
       "allowedVersions": "<=1.9.22"
     },
     {
-      "description": "Pin WildFly plugin to 2.x (compatible with WildFly 8.x for EE 6)",
+      "description": "Pin WildFly plugin to 2.1.0.Final (compatible with WildFly 8.x for EE 6)",
       "matchPackageNames": ["org.wildfly.plugins:wildfly-maven-plugin"],
-      "allowedVersions": "<=2.1.0.Final"
+      "enabled": false
     },
     {
       "description": "Local/unknown artifacts: disable Renovate for non-Central dependencies",
