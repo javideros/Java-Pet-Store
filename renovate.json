@@ -1,15 +1,47 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
-  "prHourlyLimit": 5,
-  "prConcurrentLimit": 10,
+  "extends": ["config:base"],
+  "prHourlyLimit": 10,
+  "prConcurrentLimit": 20,
   "packageRules": [
     {
       "matchManagers": ["maven"],
       "enabled": true
+    },
+    {
+      "description": "Java EE 5→6 migration: constrain to EE 6 APIs (javax.* namespace, version <=3.0.*)",
+      "matchDatasources": ["maven"],
+      "matchPackagePatterns": [
+        "^javax\\.servlet:servlet-api$",
+        "^javax\\.faces:jsf-api$",
+        "^javax\\.persistence:persistence-api$",
+        "^javax\\.el:el-api$",
+        "^javax\\.transaction:javax\\.transaction-api$",
+        "^javax\\.ejb:javax\\.ejb-api$",
+        "^javax\\.mail:mail$",
+        "^javax\\.validation:validation-api$",
+        "^javax\\.ws\\.rs:javax\\.ws\\.rs-api$"
+      ],
+      "allowedVersions": "<=3.0.*"
+    },
+    {
+      "description": "Java EE 5→6: coordinate renames that Renovate cannot auto-detect (dead artifact, new Maven coordinates)",
+      "matchPackageNames": ["javax.servlet:servlet-api"],
+      "replacementName": "javax.servlet:javax.servlet-api",
+      "replacementVersion": "3.0.1"
+    },
+    {
+      "description": "Java EE 5→6: JSF coordinate rename (jsf-api is dead, javax.faces-api is EE 6)",
+      "matchPackageNames": ["javax.faces:jsf-api"],
+      "replacementName": "javax.faces:javax.faces-api",
+      "replacementVersion": "2.1"
+    },
+    {
+      "description": "Java EE 5→6: JPA coordinate rename (persistence-api is dead, javax.persistence-api is EE 6)",
+      "matchPackageNames": ["javax.persistence:persistence-api"],
+      "replacementName": "javax.persistence:javax.persistence-api",
+      "replacementVersion": "2.0.0"
     }
-  ]
+  ],
+  "forkProcessing": "enabled"
 }
-
