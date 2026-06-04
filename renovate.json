@@ -38,10 +38,14 @@
       "replacementVersion": "2.1"
     },
     {
-      "description": "Java EE 5→6: JPA coordinate rename (persistence-api is dead, javax.persistence-api is EE 6)",
+      "description": "Java EE 5→6: JPA — no coordinate rename at EE 6 (javax.persistence-api starts at 2.2/EE 7). Constrain to <=1.0.2",
       "matchPackageNames": ["javax.persistence:persistence-api"],
-      "replacementName": "javax.persistence:javax.persistence-api",
-      "replacementVersion": "2.0.0"
+      "allowedVersions": "<=1.0.2"
+    },
+    {
+      "description": "Pin JSF 1.2 impl versions (Shale remoting incompatible with 1.2-20+). Will be replaced by JSF 2.0 migration.",
+      "matchPackageNames": ["javax.faces:jsf-api", "javax.faces:jsf-impl"],
+      "enabled": false
     },
     {
       "description": "Java 6 compat: constrain commons-io to last Java 6 compatible release (2.7+ requires Java 8)",
