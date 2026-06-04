@@ -1,8 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:base", "replacements:all"],
   "prHourlyLimit": 10,
   "prConcurrentLimit": 20,
+  "recreateWhen": "always",
   "packageRules": [
     {
       "matchManagers": ["maven"],
