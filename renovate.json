@@ -41,6 +41,66 @@
       "matchPackageNames": ["javax.persistence:persistence-api"],
       "replacementName": "javax.persistence:javax.persistence-api",
       "replacementVersion": "2.0.0"
+    },
+    {
+      "description": "Java 6 compat: constrain commons-io to last Java 6 compatible release (2.7+ requires Java 8)",
+      "matchPackageNames": ["commons-io:commons-io"],
+      "allowedVersions": "<=2.6"
+    },
+    {
+      "description": "Java 6 compat: commons-fileupload 2.x is Jakarta EE 9+",
+      "matchPackageNames": ["commons-fileupload:commons-fileupload"],
+      "allowedVersions": "<=1.5"
+    },
+    {
+      "description": "Java 6 compat: commons-logging",
+      "matchPackageNames": ["commons-logging:commons-logging"],
+      "allowedVersions": "<=1.3.4"
+    },
+    {
+      "description": "Java 6 compat: Lucene 4.0+ requires Java 7, 5.0+ requires Java 8",
+      "matchPackageNames": ["org.apache.lucene:lucene-core"],
+      "allowedVersions": "<=3.6.2"
+    },
+    {
+      "description": "Java 6 compat: JUnit 4.13.2 is the last release, backward compat with JUnit 3 TestCase",
+      "matchPackageNames": ["junit:junit"],
+      "allowedVersions": "<=4.13.2"
+    },
+    {
+      "description": "Dead coordinate: jdom 2.x is a different artifact (org.jdom2:jdom2)",
+      "matchPackageNames": ["org.jdom:jdom"],
+      "enabled": false
+    },
+    {
+      "description": "Dead coordinates: rome artifacts moved to com.rometools",
+      "matchPackagePatterns": ["^rome:rome"],
+      "enabled": false
+    },
+    {
+      "description": "Retired: Apache Shale was retired in 2009",
+      "matchPackageNames": ["org.apache.shale:shale-remoting"],
+      "enabled": false
+    },
+    {
+      "description": "Retired: httpunit has no further releases",
+      "matchPackageNames": ["httpunit:httpunit"],
+      "enabled": false
+    },
+    {
+      "description": "Java 6 compat: nekohtml later versions change coordinates",
+      "matchPackageNames": ["net.sourceforge.nekohtml:nekohtml"],
+      "allowedVersions": "<=1.9.22"
+    },
+    {
+      "description": "Pin WildFly plugin to 2.x (compatible with WildFly 8.x for EE 6)",
+      "matchPackageNames": ["org.wildfly.plugins:wildfly-maven-plugin"],
+      "allowedVersions": "<=2.1.0.Final"
+    },
+    {
+      "description": "Local/unknown artifacts: disable Renovate for non-Central dependencies",
+      "matchPackagePatterns": ["^local:"],
+      "enabled": false
     }
   ],
   "forkProcessing": "enabled"
