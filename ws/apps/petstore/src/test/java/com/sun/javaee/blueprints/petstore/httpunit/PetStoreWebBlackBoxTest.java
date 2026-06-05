@@ -14,7 +14,7 @@ import com.meterware.httpunit.WebTable;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.ConnectException;
-import junit.framework.*;
+import org.junit.*;
 
 /**
  * Black box testing for the Web 2.0 petstore. 
@@ -22,7 +22,7 @@ import junit.framework.*;
  * application and verifies if they work okay. 
  * @author inder
  */
-public class PetStoreWebBlackBoxTest extends TestCase {
+public class PetStoreWebBlackBoxTest {
     
     private String serverHost;
     private int serverPort;

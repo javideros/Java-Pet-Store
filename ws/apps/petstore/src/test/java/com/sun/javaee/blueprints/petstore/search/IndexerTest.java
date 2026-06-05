@@ -8,13 +8,13 @@
 package com.sun.javaee.blueprints.petstore.search;
 
 import java.util.List;
-import junit.framework.*;
+import org.junit.*;
 
 /**
  *
  * @author basler
  */
-public class IndexerTest extends TestCase {
+public class IndexerTest {
     
     public IndexerTest(String testName) {
         super(testName);

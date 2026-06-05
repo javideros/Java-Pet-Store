@@ -4,14 +4,14 @@ $Id: RandomStringTest.java,v 1.1 2006-09-20 21:28:22 inder Exp $ */
 package com.sun.javaee.blueprints.petstore.captcha;
 
 import com.sun.javaee.blueprints.petstore.util.TestUtil;
-import junit.framework.*;
+import org.junit.*;
 
 /**
  * JUnit based test 
  * @see com.sun.javaee.blueprints.petstore.captcha.RandomString
  * @author inder
  */
-public class RandomStringTest extends TestCase {
+public class RandomStringTest {
     
     public RandomStringTest(String testName) {
         super(testName);

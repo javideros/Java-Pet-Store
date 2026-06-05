@@ -4,7 +4,7 @@ $Id: SimpleCaptchaTest.java,v 1.2 2006-10-11 23:27:11 inder Exp $ */
 package com.sun.javaee.blueprints.petstore.captcha;
 
 import com.sun.javaee.blueprints.petstore.util.TestUtil;
-import junit.framework.*;
+import org.junit.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -22,7 +22,7 @@ import java.util.Random;
  * @see com.sun.javaee.blueprints.petstore.captcha.SimpleCaptcha
  * @author inder
  */
-public class SimpleCaptchaTest extends TestCase {
+public class SimpleCaptchaTest {
     
     public SimpleCaptchaTest(String testName) {
         super(testName);
