@@ -3,7 +3,7 @@ $Id: BlueFilterTest.java,v 1.1 2006-09-20 21:28:22 inder Exp $ */
 
 package com.sun.javaee.blueprints.petstore.captcha;
 
-import junit.framework.*;
+import org.junit.*;
 import java.awt.image.RGBImageFilter;
 
 /**
@@ -11,7 +11,7 @@ import java.awt.image.RGBImageFilter;
  * @see com.sun.javaee.blueprints.petstore.captcha.BlueFilter
  * @author inder
  */
-public class BlueFilterTest extends TestCase {
+public class BlueFilterTest {
     
     public BlueFilterTest(String testName) {
         super(testName);

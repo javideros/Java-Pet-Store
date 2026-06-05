@@ -7,13 +7,13 @@
 
 package com.sun.javaee.blueprints.petstore.captcha;
 
-import junit.framework.*;
+import org.junit.*;
 
 /**
  *
  * @author inder
  */
-public class CaptchaSuite extends TestCase {
+public class CaptchaSuite {
     
     public CaptchaSuite(String testName) {
         super(testName);
