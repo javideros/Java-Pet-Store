@@ -43,9 +43,14 @@
       "allowedVersions": "<=1.0.2"
     },
     {
-      "description": "Pin JSF 1.2 impl versions (Shale remoting incompatible with 1.2-20+). Will be replaced by JSF 2.0 migration.",
-      "matchPackageNames": ["javax.faces:jsf-api", "javax.faces:jsf-impl"],
+      "description": "Pin JSF 1.2 impl (Shale remoting incompatible with 1.2-20+). jsf-api replacement to javax.faces-api handles the migration.",
+      "matchPackageNames": ["javax.faces:jsf-impl"],
       "enabled": false
+    },
+    {
+      "description": "Constrain javax.servlet-api to EE 6 (3.0.x). Servlet 3.1+ is EE 7.",
+      "matchPackageNames": ["javax.servlet:javax.servlet-api"],
+      "allowedVersions": "<=3.0.1"
     },
     {
       "description": "Java 6 compat: constrain commons-io to last Java 6 compatible release (2.7+ requires Java 8)",
