@@ -38,13 +38,29 @@
       "replacementVersion": "2.1"
     },
     {
-      "description": "Java EE 5→6: JPA — no coordinate rename at EE 6 (javax.persistence-api starts at 2.2/EE 7). Constrain to <=1.0.2",
-      "matchPackageNames": ["javax.persistence:persistence-api"],
-      "allowedVersions": "<=1.0.2"
+      "description": "Java EE 5→6: cap JSF API at 2.1 (2.2 is EE 7, 2.3 is EE 8)",
+      "matchPackageNames": ["javax.faces:javax.faces-api"],
+      "allowedVersions": "<=2.1"
     },
     {
       "description": "Pin JSF 1.2 impl (Shale remoting incompatible with 1.2-20+). jsf-api replacement to javax.faces-api handles the migration.",
       "matchPackageNames": ["javax.faces:jsf-impl"],
+      "enabled": false
+    },
+    {
+      "description": "Java EE 5→6: JPA 1.0→2.0 coordinate move. JPA 2.0 API is published as org.eclipse.persistence:javax.persistence (javax.persistence-api starts at 2.2/EE 7)",
+      "matchPackageNames": ["javax.persistence:persistence-api"],
+      "replacementName": "org.eclipse.persistence:javax.persistence",
+      "replacementVersion": "2.0.5"
+    },
+    {
+      "description": "Java EE 5→6: cap JPA API at 2.0.* (2.1 is EE 7)",
+      "matchPackageNames": ["org.eclipse.persistence:javax.persistence"],
+      "allowedVersions": "<=2.0.*"
+    },
+    {
+      "description": "Java EE 5→6: block replacements:all preset move to javax.persistence-api — only 2.2 (EE 7) exists on Maven Central",
+      "matchPackageNames": ["javax.persistence:javax.persistence-api"],
       "enabled": false
     },
     {
@@ -53,8 +69,11 @@
       "allowedVersions": "<=3.0.1"
     },
     {
-      "description": "Java 6 compat: constrain commons-io to last Java 6 compatible release (2.7+ requires Java 8)",
-      "matchPackageNames": ["commons-io:commons-io"],
+      "description": "Java 6 compat: constrain third-party libs to last Java 6 compatible release",
+      "matchDatasources": ["maven"],
+      "matchPackagePatterns": [
+        "^commons-io:commons-io$"
+      ],
       "allowedVersions": "<=2.6"
     },
     {
@@ -78,17 +97,17 @@
       "allowedVersions": "<=4.13.2"
     },
     {
-      "description": "Dead coordinate: jdom 2.x is a different artifact (org.jdom2:jdom2)",
+      "description": "Java 6 compat: jdom 2.x is a different artifact (org.jdom2:jdom2), disable upgrades on old coordinate",
       "matchPackageNames": ["org.jdom:jdom"],
       "enabled": false
     },
     {
-      "description": "Dead coordinates: rome artifacts moved to com.rometools",
+      "description": "Dead coordinates: rome artifacts moved to com.rometools, disable old coordinates",
       "matchPackagePatterns": ["^rome:rome"],
       "enabled": false
     },
     {
-      "description": "Retired: Apache Shale was retired in 2009",
+      "description": "Retired: Apache Shale was retired in 2009, no updates available",
       "matchPackageNames": ["org.apache.shale:shale-remoting"],
       "enabled": false
     },
@@ -98,7 +117,7 @@
       "enabled": false
     },
     {
-      "description": "Java 6 compat: nekohtml later versions change coordinates",
+      "description": "Java 6 compat: nekohtml later versions change coordinates to org.cyberneko.html",
       "matchPackageNames": ["net.sourceforge.nekohtml:nekohtml"],
       "allowedVersions": "<=1.9.22"
     },
