@@ -101,7 +101,7 @@ $Id: map.jsp,v 1.20 2006-11-02 00:34:49 basler Exp $ --%>
                                 <!-- Used as spaces to center the table, this could be done programmatically,
                                 but browser diff, so I left it in the hands of the component user.  The image is located 
                                 in the component jar so for retrieval, push it through the faces servlet -->
-                                <img id="spaceImage" height="10px" width="12px" src="${pageContext.request.contextPath}/faces/static/META-INF/popup/images/spacer.gif" align="left">
+                                <img id="spaceImage" height="10px" width="12px" src="${pageContext.request.contextPath}/resources/popup/images/spacer.gif" align="left">
                                 <table border="0" width="270px" bgcolor="#ffffff" cellpadding="5" cellspacing="5">
                                     <tr>
                                         <td align="left" valign="top"><b>Name:</b>

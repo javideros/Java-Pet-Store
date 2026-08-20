@@ -9,9 +9,9 @@ $Id: banner.jsp,v 1.28 2006-12-19 20:23:53 yutayoshida Exp $ --%>
 <%@taglib prefix="ui" uri="http://java.sun.com/blueprints/ui" %>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles.css"></link>
-<script type="text/javascript" src="${pageContext.request.contextPath}/faces/static/META-INF/dojo/bpcatalog/dojo.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/faces/static/META-INF/rss/rssbar.js"></script>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/faces/static/META-INF/rss/rssbar.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/dojo/bpcatalog/dojo.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/rss/rssbar.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/rss/rssbar.css" />
 <style type="text/css">
 
 #rss-bar {

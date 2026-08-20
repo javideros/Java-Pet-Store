@@ -1,0 +1,39 @@
+.bpui_fileupload_pb_completed
+{
+    background-color: red;
+    width: 10px; 
+    height: 10px;
+}
+
+.bpui_fileupload_pb_notCompleted
+{
+    background-color: gray;
+    width: 10px; 
+    height: 10px;
+}
+
+.bpui_fileupload_pb_progressBar
+{
+    padding: 0px;
+    border-style: groove;
+}
+
+.bpui_fileupload_pb_progressText {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bpui_fileupload_pb_title {
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.bpui_fileupload_pb_status {
+    color: black;
+    font-weight: normal;
+    text-align: left;
+}
+
+

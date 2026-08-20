@@ -1,0 +1,25 @@
+    <script type="text/javascript">
+        bpui.popup["%%%ID%%%"]=new bpui.popup.createPopupObject("%%%ID%%%", [%%%DOMRETURNNAMES%%%], [%%%TABLEIDS%%%], "%%%REQUESTURL%%%", "%%%RETFUNCTION%%%", "%%%DISPLAY%%%", "%%%DELAY%%%", "%%%COLOR%%%", %%%POPUPSIZE%%%, %%%POPUPHEIGHT%%%);
+    </script>
+
+    <style>
+        div.bpui_%%%ID%%%PopupContentStyle
+        {
+            width:%%%POPUPSIZE%%%px; 
+            background-image:url(%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/middle%%%POPUPSIZE%%%.png);
+        }
+    </style>
+
+    <div class="bpui_popupStyle" id="bpui_popup%%%ID%%%">
+
+        <div class="bpui_popupArrowStyle" id="bpui_popupArrow%%%ID%%%">
+            <img id="bpui_arrowleftdownid%%%ID%%%" style="display:none; width:81px; height:152px; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/left_down.png'); "  src="%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/left_down.png">
+            <img id="bpui_arrowleftupid%%%ID%%%" style="display:none;  width:81px; height:152px; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/left_up.png'); "  src="%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/left_up.png">
+            <img id="bpui_arrowrightdownid%%%ID%%%" style="display:none; width:81px; height:152px; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/right_down.png'); "  src="%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/right_down.png">
+            <img id="bpui_arrowrightupid%%%ID%%%" style="display:none; width:81px; height:152px; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/right_up.png'); "  src="%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/right_up.png">
+        </div>
+        <div id="bpui_popTop">
+            <img id="bpui_topcapimgid%%%ID%%%" style="width:%%%POPUPSIZE%%%px; height:25px; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/top.png'); "  src="%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/top.png"></div>
+        <div class="bpui_%%%ID%%%PopupContentStyle" id="bpui_popContent" style="width:%%%POPUPSIZE%%%px; background-image=none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/middle%%%POPUPSIZE%%%.png');">
+
+
