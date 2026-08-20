@@ -48,7 +48,7 @@ $Id: searchJSF.jsp,v 1.2 2006-12-07 01:43:34 inder Exp $ --%>
                     <!-- Used as spaces to center the table, this could be done programmatically,
                     but browser diff, so I left it in the hands of the component user.  The image is located 
                     in the component jar so for retrieval, push it through the faces servlet -->
-                    <img id="spaceImage" height="10px" width="5px" src="${pageContext.request.contextPath}/faces/static/META-INF/popup/images/spacer.gif" align="left">
+                    <img id="spaceImage" height="10px" width="5px" src="${pageContext.request.contextPath}/resources/popup/images/spacer.gif" align="left">
                     <table border="0" width="270px" bgcolor="#ffffff" cellpadding="5" cellspacing="5">
                         <tr>
                             <td align="left" valign="top"><b>Name:</b>

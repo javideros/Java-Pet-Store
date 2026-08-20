@@ -1,0 +1,50 @@
+/* Copyright 2005 Sun Microsystems, Inc. All rights reserved. You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at: http://developer.sun.com/berkeley_license.html
+$Id: rssbar.css,v 1.2 2006/04/28 21:15:19 yutayoshida Exp $ */
+
+#rss-bar {
+    margin: 0 auto 10px;
+}
+
+#rss-bar table {
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#rss-bar table td#rss-channel {
+    background-repeat: no-repeat;
+    background-position: top left;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 0;
+    vertical-align: top;
+    text-align: center;
+    width: 184px;
+}
+#rss-bar table td#rss-item {
+    background-repeat: no-repeat;
+    background-position: top right;
+    font-size: 14px;
+    padding: 4px 10px 4px 16px;
+    width: 534px;
+    text-align: left;
+}
+
+#rss-bar table td#rss-item a {
+    opacity: 0.999;
+}
+#rss-bar table a {
+    color: #000033;
+    text-decoration: none;
+}
+#rss-bar table a:hover {
+    color: #663300;
+    text-decoration: underline;
+}
+
+root { 
+    display: block;
+}
+

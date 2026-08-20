@@ -1,0 +1,2172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--  Copyright 2005 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at: 
+ http://developer.sun.com/berkeley_license.html
+ $Id: ui.tld,v 1.42 2007/01/31 19:09:36 basler Exp $ -->
+
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+    
+    
+    <description>
+        Java BluePrints AJAX Components Tag Library.
+        This tag library contains tags for several useful JSF components.
+    </description>
+    <tlib-version>0.05</tlib-version>
+    <short-name>bpui</short-name>
+    <uri>http://java.sun.com/blueprints/ui</uri>
+    
+    <tag>
+        <description>
+            Cause the nested UIInput component to have its validation run 
+            on the server side using AJAX.
+        </description>
+        <name>ajaxValidator</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.taglib.AjaxValidatorTag</tag-class>
+        <body-content>JSP</body-content>
+        
+        <attribute>
+            <description>
+                Component id of this component
+            </description>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <description>
+                JavaScript client identifier for where to put the messages.
+            </description>
+            <name>messageId</name>
+            <required>true</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>
+        </attribute>
+        
+        <attribute>
+            <description>
+                The JavaScript event on which to trigger this AJAX request
+            </description>
+            <name>eventHook</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>
+        </attribute>
+        
+    </tag>
+    
+    <!-- ===================== Begin: Tags for Popup Balloon component ============================ -->  
+    <tag>
+        <name>popupTag</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.popup.PopupTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <description>
+                The attribute is used as a parameter to the JavaScript functions, show and hide that 
+                are used by the developer to reference the popup. It is also used for other component specific 
+                calls and a suffix to make HTML ids unique in the case where more than one JSF popup is used per page.
+            </description>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                This attribute is used as the URL for the XMLHttpRequest. The string is meant to be concatenated with 
+                the value that is handed in as the third parameter of the show function call of the referencing 
+                component. See user documentation for more information.
+            </description>
+            <name>xmlHttpRequestURL</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute represents a mapping of the element names that are returned from the XMLHttpRequest 
+                call and the ids of the data elements that reside in the data portion of the popup. We also search 
+                for the strings "img" and "image" in the id names to see if it may be an image, if so, we assume the 
+                response data is a URL and populate the ".src" of the element.  See user documentation for more information.
+            </description>
+            <name>elementNamePairs</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute represents the return function to call once the AJAX call has been made.  This function will be responsible for
+                populating the popup since specifying a retFunction by-passes the default functionality used with the "elementNamePairs" attribute.
+            </description>
+            <name>retFunction</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute specifies the background color of the popup image.  Currently we have images for "blue", "black", "white" and "none".
+            </description>
+            <name>color</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute specifies the width of the background popup image and is used in the calculation in the positioning of the arrow.  
+                Currently we have images for "300", "400", "500" and "600" pixels. The default width is "300".
+            </description>
+            <name>width</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute specifies whether the popup is displayed "before" or "after" the AJAX call has returned.  
+                The default is to show the popup "before" the AJAX call is made.
+            </description>
+            <name>display</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute specifies the time delay before the AJAX call is initiated in miliseconds.  
+                This gives a better user experience because the popup isn't showing everytime the user just move the mouse over the links.
+                The default is to execute the AJAX call after "1000" miliseconds (1 second).
+            </description>
+            <name>delay</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>
+        </attribute>            
+        <attribute>
+            <description>
+                This optional attribute specifies the expected height of the popup image when the data is displayed.  
+                This value used in the calculation in the positioning of the arrow in relation to the popup.
+                Currently, the default is set to 300.
+            </description>
+            <name>height</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>
+        </attribute>        
+    </tag>
+    <!-- ===================== End: Tags for Popup Balloon component ============================ -->
+    <!-- ===================== Begin Tags for File Upload component ============================ -->
+    <tag>
+        <name>fileUploadTag</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.fileupload.FileUploadTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <description>
+                The required attribute is used to associate the components related functions.                
+            </description>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute is used to reset the default storage directory to the specified fully 
+                qualified directory.  The directory has to exist and be writable by the application.  The 
+                default file up load directory is the domain's lib directory under "upload" (will be created 
+                automatically), for example, if you installed your appserver at c:\glassfish and deployed your 
+                application to "domain1", the default upload directory would be c:\glassfish\domains\domain1\lib\upload.                
+            </description>
+            <name>serverLocationDir</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute contains a return JavaScript function name that will be called when the 
+                AJAX call returns.  The signature of the return function is "functionName(type, data, evt)" and is 
+                consistent with the dojo.bind function "handle" attribute.  If this attribute is not populated, a 
+                default JavaScript function will be called that will display the return statistics.            
+            </description>
+            <name>retFunction</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute specifies the return Mime type of the AJAX call.  The default value is "text/xml"                
+            </description>
+            <name>retMimeType</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute triggers a progress bar to be displayed in the HTML div tag with the 
+                "id" name corresponding to this attributes value.  The div will be located by using the 
+                document.getElementById  function, so it must be unique.            
+            </description>
+            <name>progressBarDivId</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute is the "id" of the submit button that submits the AJAX form.  The 
+                Javascript functions will enable and disable the button if the "id" is entered.  This attribute 
+                is only relevant when the "progressBarDivId" is present.
+            </description>
+            <name>progressBarSubmitId</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute is the size of the progress bar, the default is set to 40.  
+                This number is multiplied by 10 and used as the progress bar size in pixels.  
+                This attribute is only relevant when the "progressBarDivId" is present.
+            </description>
+            <name>progressBarSize</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                This optional attribute can invoke post processing through a deferred method that resides in a JSF 
+                backing bean.  This allows the developer to execute custom functionality after the file(s)/data has 
+                been uploaded.  The signature of the method is void(javax.faces.event.PhaseEvent, java.util.HashMap, 
+                com.sun.javaee.blueprints.components.ui.fileupload.FileUploadStatus).    The method can elect to 
+                send a custom response but calling the instance method, 
+                com.sun.javaee.blueprints.components.ui.fileupload.FileUploadStatus.enableCustomReturn().  
+                If this boolean flag isn't set then the default response will be sent.
+            </description>
+            <name>postProcessingMethod</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-method>
+                <method-signature>
+                    void postProcessingMethod(javax.faces.context.FacesContext, java.util.HashMap, com.sun.javaee.blueprints.components.ui.fileupload.FileUploadStatus)
+                </method-signature>
+            </deferred-method>  
+        </attribute>
+        
+        <!-- copied from the html_basic.tld file for the form tag -->
+        <attribute>
+            <description>
+                Flag indicating whether or not this component should be rendered
+                (during Render Response Phase), or processed on any subsequent
+                form submit.
+            </description>
+            <name>rendered</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                List of content types that a server processing this form
+                will handle correctly 
+            </description>
+            <name>accept</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                List of character encodings for input data
+                that are accepted by the server processing
+                this form.
+            </description>
+            <name>acceptcharset</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Direction indication for text that does not inherit directionality.
+                Valid values are "LTR" (left-to-right) and "RTL" (right-to-left).
+            </description>
+            <name>dir</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Code describing the language used in the generated markup
+                for this component.
+            </description>
+            <name>lang</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a pointer button is
+                clicked over this element.
+            </description>
+            <name>onclick</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a pointer button is
+                double clicked over this element.
+            </description>
+            <name>ondblclick</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a key is
+                pressed down over this element.
+            </description>
+            <name>onkeydown</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a key is
+                pressed and released over this element.
+            </description>
+            <name>onkeypress</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a key is
+                released over this element.
+            </description>
+            <name>onkeyup</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a pointer button is
+                pressed down over this element.
+            </description>
+            <name>onmousedown</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a pointer button is
+                moved within this element.
+            </description>
+            <name>onmousemove</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a pointer button is
+                moved away from this element.
+            </description>
+            <name>onmouseout</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a pointer button is
+                moved onto this element.
+            </description>
+            <name>onmouseover</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when a pointer button is
+                released over this element.
+            </description>
+            <name>onmouseup</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when this form is reset.
+            </description>
+            <name>onreset</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Javascript code executed when this form is submitted.
+            </description>
+            <name>onsubmit</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                CSS style(s) to be applied when this component is rendered.
+            </description>
+            <name>style</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Space-separated list of CSS style class(es) to be applied when
+                this element is rendered.  This value must be passed through
+                as the "class" attribute on generated markup.
+            </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Name of a frame where the response
+                retrieved after this form submit is to
+                be displayed.
+            </description>
+            <name>target</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                Advisory title information about markup elements generated
+                for this component.
+            </description>
+            <name>title</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>
+                The value binding expression linking this component to a property in a backing bean
+            </description>
+            <name>binding</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>extended by javax.faces.component.html.HtmlForm</type>
+            </deferred-value>   
+        </attribute>
+    </tag>
+    <!-- ===================== End Tags for File Upload component ============================ -->
+    
+    <!-- ===================== Begin RSS Reader ============================== -->
+    <tag>
+        <description>
+            Rss Bar
+        </description>
+        <name>rssBar</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.rss.RssBarTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>url</name>
+            <required>true</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <name>itemCount</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <name>backgroundImage</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <name>color</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <name>fontSize</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <name>hoverColor</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <name>speed</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+    </tag>
+    <tag>
+        <description>
+            Rss Reader
+        </description>
+        <name>rssreader</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.rss.RssReaderTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+    </tag>
+    
+    <tag>
+        <description>specifying rss category</description>
+        <name>rsscategory</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.rss.RssCategoryTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+    </tag>
+    <tag>
+        <description>specifying rss feed</description>
+        <name>rssfeed</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.rss.RssFeedTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>title</name>
+            <required>true</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <name>url</name>
+            <required>true</required>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+    </tag>
+    <!-- ======================== END RSS READER ======================== -->
+    
+    <!-- ============= BEGIN:  tags for the AutoComplete component =========== -->
+    <tag>
+        <description>
+            Renders a text field with automatic completion.
+        </description>
+        <name>autoComplete</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.autocomplete.AutoCompleteTag</tag-class>
+        <body-content>empty</body-content>
+        
+        <attribute>
+            <description>      
+                Access key that, when pressed, transfers focus
+                to this element.
+            </description>
+            <name>accesskey</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Alternate textual description of the
+                element rendered by this component.
+            </description>
+            <name>alt</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Binding to the component in a page bean.
+            </description>
+            <name>binding</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>com.sun.javaee.blueprints.components.ui.autocomplete.AutoCompleteComponent</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Method binding expression which points to a method
+                taking a FacesContext and a prefix String, and returning
+                a String[] which will be displayed as completion results
+                for the given prefix.
+            </description>
+            <name>completionMethod</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-method>
+                <method-signature>void completeCity(javax.faces.context.FacesContext, java.lang.String, com.sun.javaee.blueprints.components.ui.autocomplete.CompletionResult)</method-signature>
+            </deferred-method>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Converter instance registered with this component.
+            </description>
+            <name>converter</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Direction indication for text that does not inherit directionality.
+                Valid values are "LTR" (left-to-right) and "RTL" (right-to-left).
+            </description>
+            <name>dir</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Flag indicating that this element must never
+                receive focus or be included in a subsequent
+                submit.
+            </description>
+            <name>disabled</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                The component identifier for this component.  This value must be
+                unique within the closest parent component that is a naming
+                container.
+            </description>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <description>
+                Flag indicating that, if this component is activated by the user,
+                notifications should be delivered to interested listeners and actions
+                immediately (that is, during Apply Request Values phase) rather than
+                waiting until Invoke Application phase.
+            </description>
+            <name>immediate</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Code describing the language used in the generated markup
+                for this component.
+            </description>
+            <name>lang</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                The maximum number of characters that may
+                be entered in this field.
+            </description>
+            <name>maxlength</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when this element loses focus.
+            </description>
+            <name>onblur</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when this element loses focus
+                and its value has been modified since gaining focus.
+            </description>
+            <name>onchange</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                JavaScript code which is given a String item that has been
+                chosen by the user and should be set in the given text field.
+                This is optional; if not set the text will be set in the
+                auto-complete text field, but this can be used to do something
+                more advanced, like split the string up into subparts and set
+                these subparts on different text fields (for example).
+            </description>
+            <name>onchoose</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                clicked over this element.
+            </description>
+            <name>onclick</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>     
+                Javascript code executed when a pointer button is
+                double clicked over this element.
+            </description>
+            <name>ondblclick</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                JavaScript code which is given a String item that has been
+                returned from the server, and it is given a chance to
+                massage this string before it is placed into the completion
+                display for the user.
+            </description>
+            <name>ondisplay</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when this element receives focus.
+            </description>
+            <name>onfocus</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when a key is
+                pressed down over this element.
+            </description>
+            <name>onkeydown</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when a key is
+                pressed and released over this element.
+            </description>
+            <name>onkeypress</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when a key is
+                released over this element.
+            </description>
+            <name>onkeyup</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                pressed down over this element.
+            </description>
+            <name>onmousedown</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                moved within this element.
+            </description>
+            <name>onmousemove</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                moved away from this element.
+            </description>
+            <name>onmouseout</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                moved onto this element.
+            </description>
+            <name>onmouseover</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>     
+                Javascript code executed when a pointer button is
+                released over this element.
+            </description>
+            <name>onmouseup</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when text within this
+                element is selected by the user.
+            </description>
+            <name>onselect</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Flag indicating that this component will prohibit
+                changes by the user.  The element may receive focus
+                unless it has also been disabled.
+            </description>
+            <name>readonly</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Flag indicating whether or not this component should be rendered
+                (during Render Response Phase), or processed on any subsequent
+                form submit.
+            </description>
+            <name>rendered</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Flag indicating that the user is required to provide a submitted
+                value for this input component.
+            </description>     
+            <name>required</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                The number of characters used to determine
+                the width of this field.
+            </description>
+            <name>size</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                CSS style(s) to be applied when this component is rendered.
+            </description>
+            <name>style</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Space-separated list of CSS style class(es) to be applied when
+                this element is rendered.  This value must be passed through
+                as the "class" attribute on generated markup.
+            </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                The text to be initially displayed in this input field.
+            </description>
+            <name>text</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Advisory title information about markup elements generated
+                for this component.
+            </description>
+            <name>title</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                MethodBinding representing a validator method that will be called
+                during Process Validations to perform correctness checks on the
+                value of this component.  The expression must evaluate to a public
+                method that takes FacesContext, UIComponent, and Object parameters,
+                with a return type of void.
+            </description>
+            <name>validator</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-method>
+                <method-signature>void validate(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)</method-signature>
+            </deferred-method>   
+        </attribute>
+        
+        <attribute>
+            <description>     
+                The current value of this component.
+            </description>
+            <name>value</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                MethodBinding representing a value change listener method that will be
+                notified when a new value has been set for this input component.  The
+                expression must evaluate to a public method that takes a
+                ValueChangeEvent parameter, with a return type of void.
+            </description>
+            <name>valueChangeListener</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-method>
+                <method-signature>void processValueChange(javax.faces.event.ValueChangeEvent)</method-signature>
+            </deferred-method>   
+        </attribute>
+    </tag>
+    <!-- ============== END:  tags for the AutoComplete component ============ -->
+    <!-- =================== BEGIN: tags for the Rating component ========================== -->
+    <tag>
+        <description>
+            Displays a rating (grade) for an item.
+        </description>
+        <name>rating</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.rating.RatingTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>
+                Binding to the component in a page bean.
+            </description>
+            <name>binding</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>com.sun.javaee.blueprints.components.ui.rating.RatingComponent</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Component id of this component.
+            </description>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <description>
+                Css style for the component.
+            </description>
+            <name>style</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Css styleClass for the component.
+            </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                The maximum grade (number of "stars") this rating instance allows..
+            </description>
+            <name>maxGrade</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Integer</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                The grade (number of "stars") the user has assigned the item. Use RatingComponent.NOT_INTERESTED_GRADE for "not interested" and RatingComponent.CLEAR_GRADE for a "clear" grade. This property must be bound.
+            </description>
+            <name>grade</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Integer</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                The average grade the general user population has assigned to the item. Must be between 0.0 and maxGrade. This property must be bound.
+            </description>
+            <name>averageGrade</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Double</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Whether the component will be initially rendered displaying the average grade. If False, then the component will be initially rendered displaying the user's grade (normal mode).
+            </description>
+            <name>inAverageMode</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Whether a "not interested" control should be rendered.
+            </description>
+            <name>includeNotInterested</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Whether a control to clear the user's rating should be rendered.
+            </description>
+            <name>includeClear</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Whether a control to toggle the mode (to show the average rating or the user's rating) should be rendered.
+            </description>
+            <name>includeModeToggle</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Whether an area for text should be rendered.
+            </description>
+            <name>includeText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                An array of custom hover texts that will be used for the "star" controls. If null is specified as a member of the array, the default hover text will be used for that "star."
+            </description>
+            <name>hoverTexts</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String[]</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A custom hover text that will be used for the "not interested" control.
+            </description>
+            <name>notInterestedHoverText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A custom hover text that will be used for the "clear" control.
+            </description>
+            <name>clearHoverText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A custom hover text that will be used for the mode toggle control, 
+                offering the user to switch to normal mode.
+            </description>
+            <name>normalModeHoverText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A custom hover text that will be used for the mode toggle control, 
+                offering the user to switch to average mode.
+            </description>
+            <name>averageModeHoverText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Text that appears when the user assigns a grade to the item (i.e., when the user clicks a control other than the mode toggle). If bound, this property is sent to the client via AJAX.
+            </description>
+            <name>gradeAcknowledgedText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Text that appears when the user clicks the mode toggle control to switch to normal mode.
+            </description>
+            <name>normalModeAcknowledgedText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Text that appears when the user clicks the modeToggle control to switch to average mode.
+            </description>
+            <name>averageModeAcknowledgedText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Text that appears when the mouse is not hovering and the component is in normal mode. If bound, this property is sent to the client via AJAX.
+            </description>
+            <name>normalModeText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Text that appears when the mouse is not hovering and the component is in average mode. If bound, this property is sent to the client via AJAX.
+            </description>
+            <name>averageModeText</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Whether the grade of this rating instance can be changed by the user.
+            </description>
+            <name>gradeReadOnly</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Whether the mode of this rating instance can be changed by the user via the mode toggle control.
+            </description>
+            <name>modeReadOnly</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A scripting function that will be called when the user assigns a grade (including "not interested" or "clear").
+            </description>
+            <name>onGrade</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A scripting function that will be called when the user toggles the mode.
+            </description>
+            <name>onModeToggle</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A scripting function that will be called when the user mouses
+                over or out.
+            </description>
+            <name>onMouse</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+    </tag>
+    <!-- ===================== END: tags for the Rating component ========================== -->
+    
+    <!-- ============== BEGIN:  tags for the BuyNow component ============ -->
+    <tag>
+        <description>
+            Component that enables single order transaction via PayPal.
+        </description>
+        <name>buyNow</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.shopping.BuyNowTag</tag-class>
+        <body-content>empty</body-content>
+        
+        <attribute>
+            <description>      
+                The component identifier for this component.  This value must be
+                unique within the closest parent component that is a naming
+                container.
+            </description>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Flag indicating whether or not this component should be rendered
+                (during Render Response Phase), or processed on any subsequent
+                form submit.
+            </description>
+            <name>rendered</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Access key that, when pressed, transfers focus
+                to this element.
+            </description>
+            <name>accesskey</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>     
+                Alternate text to serve as content when the element cannot be rendered normally.
+            </description>
+            <name>alt</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>    
+        <attribute>
+            <description>
+                Direction indication for text that does not inherit directionality.
+                Valid values are "LTR" (left-to-right) and "RTL" (right-to-left).
+            </description>
+            <name>dir</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>    
+        <attribute>
+            <description>      
+                Code describing the language used in the generated markup
+                for this component.
+            </description>
+            <name>lang</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Javascript code executed when this element loses focus.
+            </description>
+            <name>onblur</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Javascript code executed when this element receives focus.
+            </description>
+            <name>onfocus</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Javascript code executed when a key is
+                pressed down over this element.
+            </description>
+            <name>onkeydown</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Javascript code executed when a key is
+                pressed and released over this element.
+            </description>
+            <name>onkeypress</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>     
+                Javascript code executed when a key is
+                released over this element.
+            </description>
+            <name>onkeyup</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                pressed down over this element.
+            </description>
+            <name>onmousedown</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                moved within this element.
+            </description>
+            <name>onmousemove</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                moved away from this element.
+            </description>
+            <name>onmouseout</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                moved onto this element.
+            </description>
+            <name>onmouseover</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Javascript code executed when a pointer button is
+                released over this element.
+            </description>
+            <name>onmouseup</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>    
+        <attribute>
+            <description>     
+                Javascript code executed when a pointer button is
+                clicked over this element.
+            </description>
+            <name>onclick</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>   
+        <attribute>
+            <description>      
+                CSS style(s) to be applied when this component is rendered.
+            </description>
+            <name>style</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Space-separated list of CSS style class(es) to be applied when
+                this element is rendered.  This value must be passed through
+                as the "class" attribute on generated markup.
+            </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Position of this element in the tabbing order
+                for the current document.  This value must be
+                an integer between 0 and 32767.
+            </description>
+            <name>tabindex</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        <attribute>
+            <description>      
+                Advisory title information about markup elements generated
+                for this component.
+            </description>
+            <name>title</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                The value binding expression linking this component to a property in a backing bean
+            </description>
+            <name>binding</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>com.sun.javaee.blueprints.components.ui.shopping.BuyNowComponent</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression representing the email
+                address of Seller's PayPal account. Alias for PayPal AttributeName: business
+            </description>
+            <name>business</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression representing the price or
+                amount of purchase. Alias for PayPal AttributeName: amount
+            </description>
+            <name>amount</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression representing the number 
+                of items.Alias for PayPal AttributeName: quantity
+            </description>
+            <name>quantity</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression representing the name of
+                the item.  Alias for PayPal AttributeName: item_name
+            </description>
+            <name>itemName</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression representing the URL of
+                150x50-pixel image displayed as your in the PayPal pages.
+                Alias for PayPal AttributeName: image_url
+            </description>
+            <name>imageUrl</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression an image for the BuyNow
+                button.
+            </description>
+            <name>image</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression representing the URL to which
+                customer's browser is returned if payment is cancelled.
+                Alias for PayPal AttributeName: cancel_return
+            </description>
+            <name>paymentCancelledUrl</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression representing the URL to
+                which PayPal posts information about the transaction.
+                Alias for PayPal AttributeName: notify_url
+            </description>
+            <name>postBackUrl</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A literal value or a value binding expression representing the URL to
+                which customer's browser is returned after completing the payment.
+                Alias for PayPal AttributeName: return
+            </description>
+            <name>returnUrl</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Name of a frame where the resource  retrieved via this hyperlink is to
+                be displayed.
+            </description>
+            <name>target</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A way to indicate whether this is a BuyNow or a Donations button.
+            </description>
+            <name>type</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Indicates whether you are running in the deployment mode or test mode.
+                Default is test mode.
+            </description>
+            <name>testMode</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Indicates whether the Buy now button should be rendered as a button in
+                its own form tag or as a Link
+            </description>
+            <name>displayMode</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <description>
+                Indicates whether the button should be disabled.
+            </description>
+            <name>disabled</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>     
+                A value binding expression that evaulates to a JavaBean of type 
+                BuyNowPostData that encapsulates any additional attributes that Sellers 
+                might want to post to PayPal in addition to the ones that are supported 
+                by the BuyNowComponent.
+            </description>
+            <name>postData</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>com.sun.javaee.blueprints.components.ui.shopping.BuyNowPostData</type>
+            </deferred-value>   
+        </attribute>
+        
+    </tag>
+    
+    <!-- ============== END:  tags for the BuyNow component ============ -->
+
+    <!-- =================== BEGIN: tags for the Map Viewer component ========================== -->
+    <tag>
+        <description>
+            Renders a map allowing visual display of locations
+        </description>
+        <name>mapViewer</name>
+        <tag-class>com.sun.javaee.blueprints.components.ui.mapviewer.MapTag</tag-class>
+        <body-content>empty</body-content>
+        
+        <attribute>
+            <description>
+                Binding to the component in a page bean.
+            </description>
+            <name>binding</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>com.sun.javaee.blueprints.components.ui.mapviewer.MapComponent</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                A MapPoint representing the geographic
+                location around which this map should
+                be centered.
+            </description>
+            <name>center</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>com.sun.javaee.blueprints.components.ui.mapviewer.MapPoint</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Flag indicating that the map surface may
+                be dragged after being rendered.
+            </description>
+            <name>draggingEnabled</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolea</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                The component identifier for this component.  This value must be
+                unique within the closest parent component that is a naming
+                container.
+            </description>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <description>
+                A MapMarker representing the geographic location
+                at which an information balloon should be presented,
+                along with the text to be displayed.
+            </description>
+            <name>info</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>com.sun.javaee.blueprints.components.ui.mapviewer.MapMarker</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Google Maps API key for this component.  You may
+                specify this globally for the entire application
+                by using a context init parameter named
+                "com.sun.j2ee.blueprints.ui.mapviewer.KEY".
+            </description>
+            <name>key</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Flag indicating that the rendered map should
+                include navigation controls.
+            </description>
+            <name>mapControls</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Array of MapMarker instances to display
+                location markers on the map.  The text
+                of each MapMarker will be displayed as a
+                pop-up when that marker is clicked.
+            </description>
+            <name>markers</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>com.sun.javaee.blueprints.components.ui.mapviewer.MapMarker[]</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                CSS style(s) to be applied when this component is rendered.
+            </description>
+            <name>style</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>      
+                Space-separated list of CSS style class(es) to be applied when
+                this element is rendered.  This value must be passed through
+                as the "class" attribute on generated markup.
+            </description>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.String</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Flag indicating whether or not map type controls
+                should be included on the rendered map.
+            </description>
+            <name>typeControls</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Boolean</type>
+            </deferred-value>   
+        </attribute>
+        
+        <attribute>
+            <description>
+                Integer describing the zoom level for the rendered map.
+                Valid values are 1-9.
+            </description>
+            <name>zoomLevel</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <deferred-value>
+                <type>java.lang.Integer</type>
+            </deferred-value>   
+        </attribute>
+        
+    </tag>  
+    <!-- ===================== END: tags for the Map Viewer component ========================== -->
+    
+    
+</taglib>

@@ -1,0 +1,17 @@
+
+div.bpui_popupStyle
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:2;
+    visibility:hidden;
+}
+div.bpui_popupArrowStyle
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:3;
+}
+

@@ -1,0 +1,9 @@
+        </div>
+        <div id="bpui_popBottom">
+            <img id="bpui_bottomcapimgid%%%ID%%%" style="width:%%%POPUPSIZE%%%px; height:25px; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/bottom.png'); "  src="%%%FACESCONTEXTROOT%%%/META-INF/popup/images/%%%COLOR%%%/bottom.png"/>
+        </div>
+    </div>
+    <script>
+        // need to load transparent images for IE to work
+        bpui.popup.loadOnce("%%%FACESCONTEXTROOT%%%", "%%%ID%%%");
+    </script>

@@ -1,0 +1,31 @@
+/*
+ * Copyright 2006 Sun Microsystems, Inc.  All rights reserved.
+ * You may not modify, use, reproduce, or distribute this
+ * software except in compliance with the terms of the License at:
+ *
+ *   http://developer.sun.com/berkeley_license.html
+ *
+ * $Id: styles.css,v 1.1 2006/10/31 17:52:11 basler Exp $
+ */
+
+.bpui_rating_text {
+    text-align: center;
+}
+
+.bpui_rating_controlArea {
+}
+
+.bpui_rating_notInterestedArea {
+}
+
+.bpui_rating_starArea {
+}
+
+.bpui_rating_spacerArea {
+}
+
+.bpui_rating_clearArea {
+}
+
+.bpui_rating_modeToggleArea {
+}

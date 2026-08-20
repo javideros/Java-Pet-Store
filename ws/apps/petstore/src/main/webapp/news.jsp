@@ -14,7 +14,7 @@ $Id: news.jsp,v 1.2 2006-12-14 01:04:50 yutayoshida Exp $ --%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BluePrints News Page</title>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/faces/static/META-INF/dojo/bpcatalog/dojo.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/dojo/bpcatalog/dojo.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/news.js"></script>
 
         <style>

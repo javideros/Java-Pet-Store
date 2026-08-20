@@ -16,6 +16,7 @@
                  Remove these properties when using a real database. -->
             <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.import_files_sql_extractor" value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor"/>
             <property name="hibernate.hbm2ddl.import_files" value="/db/migration/petstore.sql,/db/migration/import-ziplocation.sql"/>
         </properties>
     </persistence-unit>

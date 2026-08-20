@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.faces.context.ResponseWriter;
 import javax.faces.model.SelectItem;
-import org.apache.shale.remoting.faces.ResponseFactory;
+import javax.faces.FactoryFinder;
+import javax.faces.render.RenderKit;
+import javax.faces.render.RenderKitFactory;
 import com.sun.javaee.blueprints.petstore.util.PetstoreUtil;
 import com.sun.javaee.blueprints.petstore.util.PetstoreConstants;
 import com.sun.javaee.blueprints.petstore.util.ImageScaler;
@@ -43,12 +45,6 @@ public class FileUploadBean {
     private List<SelectItem> categories = null;
     private List<SelectItem> products = null;
     private CatalogFacade catalogFacade = null;
-    
-    /**
-     * <p>Factory for response writers that we can use to construct the
-     * outgoing response.</p>
-     */
-    private static ResponseFactory factory = new ResponseFactory();
     
     /**
      * session attribute to contain the fileupload status
@@ -106,8 +102,22 @@ public class FileUploadBean {
             String proxyHost=context.getExternalContext().getInitParameter("proxyHost");
             String proxyPort=context.getExternalContext().getInitParameter("proxyPort");
             
-            // Acquire a response containing these results
-            ResponseWriter writer = factory.getResponseWriter(context, "text/xml");
+            // Acquire a response containing these results.
+            // JSF 2.x: build the ResponseWriter from the active RenderKit instead of
+            // Shale Remoting's ResponseFactory (Shale was retired in 2009 and is not
+            // JSF 2 compatible). This uses only standard javax.faces APIs.
+            RenderKitFactory renderKitFactory =
+                    (RenderKitFactory) FactoryFinder.getFactory(FactoryFinder.RENDER_KIT_FACTORY);
+            String renderKitId = null;
+            if (context.getViewRoot() != null) {
+                renderKitId = context.getViewRoot().getRenderKitId();
+            }
+            if (renderKitId == null) {
+                renderKitId = RenderKitFactory.HTML_BASIC_RENDER_KIT;
+            }
+            RenderKit renderKit = renderKitFactory.getRenderKit(context, renderKitId);
+            ResponseWriter writer =
+                    renderKit.createResponseWriter(response.getWriter(), "text/xml", "UTF-8");
             
             String itemId = null;
             String name = null;
